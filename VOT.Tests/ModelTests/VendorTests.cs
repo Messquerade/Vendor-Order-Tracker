@@ -21,5 +21,20 @@ namespace VOT.Tests
       Vendor newVendor = new Vendor("Larry's Cafe", "A small cafe with weekly orders.");
       Assert.AreEqual("Larry's Cafe", newVendor.Name);
     }
+
+    [TestMethod]
+    public void SetName_ReturnsUpdatedName_String()
+    {
+      Vendor newVendor = new Vendor("Larry's Cafe", "A small cafe with weekly orders.");
+      newVendor.Name = "Greg and Larry's Cafe";
+      Assert.AreEqual("Greg and Larry's Cafe", newVendor.Name);
+    }
+
+    [TestMethod]
+    public void GetDescription_ReturnsDescription_String()
+    {
+      Vendor newVendor = new Vendor("Greg and Larry's Cafe", "A small cafe with weekly orders.");
+      Assert.AreEqual("A small cafe with weekly orders.", newVendor.Description);
+    }
   }
 }
