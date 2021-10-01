@@ -6,8 +6,13 @@ using System;
 namespace VOT.Tests
 {
   [TestClass]
-  public class VendorTests
+  public class VendorTests : IDisposable
   {
+    public void Dispose()
+    {
+      Vendor.ClearAll();
+    }
+
     [TestMethod]
     public void VendorConstructor_TypeIsVendor_Vendor()
     {
@@ -36,5 +41,23 @@ namespace VOT.Tests
       Vendor newVendor = new Vendor("Greg and Larry's Cafe", "A small cafe with weekly orders.");
       Assert.AreEqual("A small cafe with weekly orders.", newVendor.Description);
     }
+
+    [TestMethod]
+    public void SetDescription_ReturnsUpdatedDescription_String()
+    {
+      Vendor newVendor = new Vendor("Greg and Larry's Cafe", "A small cafe with weekly orders.");
+      newVendor.Description = "A small LGBTQ+ friendly cafe with weekly orders.";
+      Assert.AreEqual("A small LGBTQ+ friendly cafe with weekly orders.", newVendor.Description);
+    }
+    
+    [TestMethod]
+    public void GetAll_ReturnsAllVendors_VendorList()
+    {
+      Vendor newVendor = new Vendor("Greg and Larry's Cafe", "A small cafe with weekly orders.");
+      Vendor anotherVendor = new Vendor("Jurassic Fork", "A dino themed restaurant with biweekly orders.");
+      List<Vendor> vendorList = new List<Vendor> {newVendor, anotherVendor};
+      CollectionAssert.AreEqual(vendorList, Vendor.GetAll());
+    }
+
   }
 }
