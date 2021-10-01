@@ -14,5 +14,12 @@ namespace VOT.Tests
       Vendor newVendor = new Vendor("Larry's Cafe", "A small cafe with weekly orders.");
       Assert.AreEqual(typeof(Vendor), newVendor.GetType());
     }
+
+    [TestMethod]
+    public void GetName_ReturnsName_String()
+    {
+      Vendor newVendor = new Vendor("Larry's Cafe", "A small cafe with weekly orders.");
+      Assert.AreEqual("Larry's Cafe", newVendor.Name);
+    }
   }
 }
