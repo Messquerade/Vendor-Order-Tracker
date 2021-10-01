@@ -13,5 +13,18 @@ namespace VOT.Controllers
       List<Vendor> currentVendors = Vendor.GetAll();
       return View(currentVendors);
     }
+
+    [HttpPost("/vendor")]
+    public ActionResult Create(string name, string description)
+    {
+      Vendor newVendor = new Vendor(name, description);
+      return Redirect("/");
+    }
+
+    [HttpGet("/vendor/new")]
+    public ActionResult New()
+    {
+      return View();
+    }
   }
 }
