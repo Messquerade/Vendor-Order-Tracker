@@ -1,12 +1,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectName.Models;
+using VOT.Models;
 using System.Collections.Generic;
 using System;
 
-namespace ProjectName.Tests
+namespace VOT.Tests
 {
   [TestClass]
-  public class ChildClassTests
+  public class VendorTests
   {
     
   }
