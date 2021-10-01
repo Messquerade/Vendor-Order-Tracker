@@ -75,6 +75,16 @@ namespace VOT.Tests
       Assert.AreEqual(anotherVendor, Vendor.Find(2));
     }
 
+    [TestMethod]
+    public void AddOrder_AddOrderToSpecificVendor_OrderList()
+    {
+      Vendor newVendor = new Vendor("Greg and Larry's Cafe", "A small cafe with weekly orders.");
+      Order newOrder = new Order("Order 1", "20 loaves of bread, 50 pastries", 154.00, "2021-09-25");
+      List<Order> vendorOrders = new List<Order> {newOrder};
+      newVendor.AddOrder(newOrder);
+      CollectionAssert.AreEqual(vendorOrders, newVendor.Orders);
+    }
+
 
 
   }

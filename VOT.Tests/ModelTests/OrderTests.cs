@@ -63,6 +63,15 @@ namespace VOT.Tests
       List<Order> allOrders = new List<Order> {newOrder, anotherOrder};
       CollectionAssert.AreEqual(allOrders, Order.GetAll());
     }
+
+    [TestMethod]
+    public void Find_ReturnsSpecificOrder_Order()
+    {
+      Order newOrder = new Order("Order 1", "20 loaves of bread, 50 pastries", 154.00, "2021-09-25");
+      Order anotherOrder = new Order("Order 2", "30 loaves of bread, 30 pastries", 150.00, "2021-10-01");
+      Assert.AreEqual(newOrder, Order.Find(1));
+    }
+
   
   }
 }
