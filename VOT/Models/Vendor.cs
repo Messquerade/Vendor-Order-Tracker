@@ -7,12 +7,14 @@ namespace VOT.Models
     public string Name {get; set;}
     public string Description {get; set;}
     private static List<Vendor> _instances = new List<Vendor> {};
+    public int Id {get;}
 
     public Vendor(string name, string description)
     {
       Name = name;
       Description = description;
       _instances.Add(this);
+      Id = _instances.Count;
 
     }
 
@@ -25,5 +27,12 @@ namespace VOT.Models
     {
       _instances.Clear();
     }
+
+    public static Vendor Find(int id)
+    {
+      return _instances[id - 1];
+    }
+
+
   }
 }

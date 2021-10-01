@@ -59,5 +59,23 @@ namespace VOT.Tests
       CollectionAssert.AreEqual(vendorList, Vendor.GetAll());
     }
 
+    [TestMethod]
+    public void GetId_ReturnsId_Int()
+    {
+      Vendor newVendor = new Vendor("Greg and Larry's Cafe", "A small cafe with weekly orders.");
+      Vendor anotherVendor = new Vendor("Jurassic Fork", "A dino themed restaurant with biweekly orders.");
+      Assert.AreEqual(2, anotherVendor.Id);
+    }
+
+    [TestMethod]
+    public void Find_ReturnsSpecificVendor_Vendor()
+    {
+      Vendor newVendor = new Vendor("Greg and Larry's Cafe", "A small cafe with weekly orders.");
+      Vendor anotherVendor = new Vendor("Jurassic Fork", "A dino themed restaurant with biweekly orders.");
+      Assert.AreEqual(anotherVendor, Vendor.Find(2));
+    }
+
+
+
   }
 }
