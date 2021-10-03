@@ -14,6 +14,7 @@
 @foreach(Vendor vendor in Model)
 {
   <h4><a href='/vendor/@vendor.Id/order'>@vendor.Name</a></h4>
+  <p>@vendor.Description</p>
 }
 
 <a href="/vendor/new">Create a new vendor</a>
