@@ -7,11 +7,10 @@ namespace VOT.Controllers
 {
   public class OrderController : Controller
   {
-    [HttpGet("/vendor/{Id}/order/")]
-    public ActionResult Index(int Id)
+    [HttpGet("/vendor/{vendorId}/order/")]
+    public ActionResult Index(int vendorId)
     {
-      Vendor currentVendor = Vendor.Find(Id);
-      // Dictionary<string, List<Order>> model = new Dictionary<Vendor, List<Order>> {{currentVendor.Name, currentVendor.Orders}}
+      Vendor currentVendor = Vendor.Find(vendorId);
       return View(currentVendor);
     }
 
@@ -22,6 +21,18 @@ namespace VOT.Controllers
       return View(currentVendor);
     }
 
-
+    [HttpGet("/vendor/{vendorId}/order/{orderId}")]
+    public ActionResult Show(int vendorId, int orderId)
+    {
+      Order order = Order.Find(orderId);
+      Vendor vendor = Vendor.Find(vendorId);
+      Dictionary<string, object> model = new Dictionary<string, object>
+      {
+        {"vendor", vendor},
+        {"order", order}
+      };
+      return View(model);
+    }
+   
   }
 }

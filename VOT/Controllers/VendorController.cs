@@ -26,5 +26,14 @@ namespace VOT.Controllers
     {
       return View();
     }
+
+    [HttpPost("/vendor/{vendorId}/order/")]
+    public ActionResult Create(int vendorId, string title, string description, double price, string date)
+    {
+      Vendor currentVendor = Vendor.Find(vendorId);
+      Order newOrder = new Order(title, description, price, date);
+      currentVendor.AddOrder(newOrder);
+      return RedirectToAction("Index");
+    }
   }
 }
